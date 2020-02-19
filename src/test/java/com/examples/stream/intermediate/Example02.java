@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 
 public class Example02 {
 
+    // by specification, Predication should not be stateful
     public static <T> Predicate<T> distinct(long atLeast) {
         ConcurrentHashMap<T, Long> map = new ConcurrentHashMap<>();
         return t -> map.merge(t, 1L, Long::sum) == atLeast;
